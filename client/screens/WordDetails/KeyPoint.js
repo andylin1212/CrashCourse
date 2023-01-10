@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native'
 
 function KeyPoint(props) {
-  const sentence = props.text.split('. ');
+  const sentence = props.text.split(/[.):]/g);
   const style = props.style;
   const num = sentence[0];
   const content = sentence[1];

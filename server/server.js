@@ -131,6 +131,28 @@ app.post('/questions', async (req, res) => {
   }
 })
 
+app.post('/joke', async (req, res) => {
+  try {
+    const prompt = req.body.prompt;
+    const response = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: `tell me the funniest joke about ${prompt}`,
+      temperature: 1,
+      max_tokens: 200,
+      top_p: 0.51,
+      frequency_penalty: 0.5,
+      presence_penalty: 0.6,
+    });
+    console.log(response.data.choices[0].text)
+    res.status(200).json({
+      message: response.data.choices[0].text
+    })
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error })
+  }
+})
+
 
 
 const port = 5000;

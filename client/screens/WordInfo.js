@@ -24,13 +24,15 @@ function WordInfo( {route}) {
     try {
       const interestingResponse = await axios.post(`http://192.168.1.4:5000/interesting-facts`, {prompt: input})
       const questionResponse = await axios.post(`http://192.168.1.4:5000/questions`, {prompt: input})
+      const jokeResponse = await axios.post(`http://192.168.1.4:5000/joke`, {prompt: input})
 
       console.log('interesting', interestingResponse.data.message)
 
       const interestingResReformatted = interestingResponse.data.message.split('\n').filter(word => word.length !== 0);
       const questionResReformatted = questionResponse.data.message.split('\n').filter(word => word.length !== 0);
+      const jokeResReformatted = jokeResponse.data.message.split('\n').filter(word => word.length !== 0);
 
-      setOtherInfo([interestingResReformatted, questionResReformatted]);
+      setOtherInfo([interestingResReformatted, questionResReformatted, jokeResReformatted]);
 
     } catch (err) {
       Alert.alert('Error', 'There was an error making the request');

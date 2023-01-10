@@ -13,7 +13,6 @@ function Summary({route, navigation}) {
         <Button
           title="Back"
           onPress={() => {
-          console.log('impressed')
           navigation.navigate("Search", {
             //   input: input,
             // })

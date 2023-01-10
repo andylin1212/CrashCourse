@@ -5,8 +5,7 @@ import KeyPoint from './KeyPoint';
 
 function Random({route, navigation}) {
   const { otherInfo } = useContext(LoadingContext);
-
-  console.log(otherInfo[1])
+  console.log(otherInfo[2])
 
   return (
     <SafeAreaView style={styles.container}>
@@ -27,8 +26,19 @@ function Random({route, navigation}) {
         )}
       </View>
 
-      <View>
-        <Text>{otherInfo[1]}</Text>
+      <View style={styles.questionsContainer}>
+        <Text style={styles.header}>Questions to Ask</Text>
+        {otherInfo[1].map((text)=>
+          <KeyPoint key={text[0]} text={text} ></KeyPoint>
+        )}
+      </View>
+
+      <View style={styles.jokesContainer}>
+        <Text style={styles.header}>Random Joke</Text>
+        <Text>Rarely funny</Text>
+        {otherInfo[2].map((text)=>
+          <KeyPoint key={text[0]} text={text} style={'circle'}>></KeyPoint>
+        )}
       </View>
     </SafeAreaView>
   );
@@ -38,11 +48,26 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'flex-start',
-    position: 'relative'
+    justifyContent: 'center',
   },
   interestingFactsContainer: {
-    flex: 0.5,
+    flex: 3,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 15,
+    paddingHorizontal: 15,
+    width: '90%',
+  },
+  questionsContainer: {
+    flex: 2,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 15,
+    paddingHorizontal: 15,
+    width: '90%',
+  },
+  jokesContainer: {
+    flex: 2,
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingVertical: 15,
