@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native'
 
+const regEX = /[.):]/g;
 function KeyPoint(props) {
-  const sentence = props.text.split(/[.):]/g);
+  const sentence = props.text.split(".", 3);
   const style = props.style;
   const num = sentence[0];
-  const content = sentence[1];
+  const content = sentence.slice(1).join('.');
 
   return (
    <View style={[styles.keyPointContainer, styles.shadowProp]}>
@@ -24,6 +25,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-around',
     flexWrap: 'wrap',
     marginBottom: 20,
     width: '100%'

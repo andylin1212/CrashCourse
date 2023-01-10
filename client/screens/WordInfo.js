@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { StyleSheet, SafeAreaView, View,  Text, TouchableHighlight } from 'react-native';
+import React, { useState, useEffect, useContext, useRef } from 'react';
+import { StyleSheet, SafeAreaView, View,  Text, TouchableOpacity } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Summary from './WordDetails/Summary'
 import Details from './WordDetails/Details'
@@ -9,6 +9,8 @@ import { Alert } from 'react-native';
 import axios from 'axios';
 import { LoadingContext } from '../context/loadingContext'
 import Icon from 'react-native-vector-icons/Ionicons';
+import * as Animatable from 'react-native-animatable';
+import TabButton from './TabButton';
 
 const Tab = createBottomTabNavigator();
 
@@ -44,34 +46,62 @@ function WordInfo( {route}) {
   //additional queries in the background
   useEffect (() => {
     // additionalSearch(input)
+    console.log('rerendered')
   },[])
+
+
+  const TabArr = [
+    { route: 'Summary', label: 'Summary', type: Icon.Ionicons, activeIcon: 'ios-home-sharp', inactiveIcon : 'ios-home-outline', component: Summary, initialParams: { input: input, summary: summary, relatedWords: relatedWords }},
+    { route: 'Details', label: 'Details', type: Icon.Ionicons, activeIcon: 'ios-information-circle-sharp', inactiveIcon : 'ios-information-circle-outline', component: Details, initialParams: { input: input, details: details }},
+    { route: 'Random', label: 'Random', type: Icon.Ionicons, activeIcon: 'ios-happy', inactiveIcon : 'ios-happy-outline', component: Random, initialParams:{input: input}},
+    { route: 'Story', label: 'Story', type: Icon.Ionicons, activeIcon: 'book' , inactiveIcon : 'book-outline', component: Story, initialParams:{input: input}},
+  ];
+
 
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
         headerShown: false,
-        tabBarStyle: {
-          height: 80,
-          paddingTop: 15,
-        },
-        tabBarIcon: ({color, size, focused}) => {
-          let iconChosen;
-          if (route.name === "Summary") {
-            iconChosen = focused ? 'ios-home-sharp' : 'ios-home-outline'
-          } else if (route.name === "Details") {
-            iconChosen = focused ? 'ios-information-circle-sharp' : 'ios-information-circle-outline'
-          } else if (route.name === "Random") {
-            iconChosen = focused ? 'ios-happy' : 'ios-happy-outline'
-          } else if (route.name === "Story") {
-            iconChosen = focused ? 'book' : 'book-outline'
-          }
-          return <Icon name={iconChosen} size={22} />
-        }
+        tabBarStyle: styles.tabBarStyle,
+        //   tabBarIcon: ({color, size, focused}) => {
+        //   let iconChosen;
+        //   if (route.name === "Summary") {
+        //     iconChosen = focused ? 'ios-home-sharp' : 'ios-home-outline'
+        //   } else if (route.name === "Details") {
+        //     iconChosen = focused ? 'ios-information-circle-sharp' : 'ios-information-circle-outline'
+        //   } else if (route.name === "Random") {
+        //     iconChosen = focused ? 'ios-happy' : 'ios-happy-outline'
+        //   } else if (route.name === "Story") {
+        //     iconChosen = focused ? 'book' : 'book-outline'
+        //   }
+        //   return (
+        //     <TouchableOpacity>
+        //       <Animatable.View
+        //         ref={viewRef}
+        //         style={styles.btn}
+        //       >
+        //         <Icon name={iconChosen} size={22} color={color} />
+        //       </Animatable.View>
+        //     </TouchableOpacity>
+        //   )
+        // },
+        // tabBarButton: (props) => <TabButton {...props} item={item} />
+      })}>
+      {TabArr.map((item, index) => {
+        return (
+          <Tab.Screen name={item.route} component={item.component} initialParams={item.initialParams} key={index}
+            options={{
+              // tabBarLabel: item.label,
+              tabBarShowLabel: false,
+              tabBarButton: (props) => <TabButton {...props} item={item} />
+            }}
+          />
+        )
       })}
-    >
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Summary"
         component={Summary}
+
         initialParams ={{
             input: input,
             summary: summary,
@@ -99,12 +129,29 @@ function WordInfo( {route}) {
         initialParams ={{
             input: input,
         }}
-      />
+      /> */}
     </Tab.Navigator>
     // <SafeAreaView>
     //   <Text>WordInfo</Text>
     // </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  tabBarStyle: {
+    position: "absolute",
+    height: 65,
+    bottom: 15,
+    right: 18,
+    left: 18,
+    borderRadius: 15,
+    paddingBottom: 0,
+    flex: 1,
+    shadowColor: '#171717',
+    shadowOffset: {width: -2, height: 4},
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  }
+})
 
 export default WordInfo;

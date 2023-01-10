@@ -47,7 +47,7 @@ app.post('/related-words', async (req, res) => {
 
     const response = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: `Please give me 6 words directly related and the other 6 words indirectly related to ${prompt}, separated by commas without the labeling`,
+      prompt: `Please give me 5 words directly related and the other 5 words indirectly related to ${prompt}, separated by commas without the labeling`,
       temperature: 0.9,
       max_tokens: 125,
       top_p: 0.6,

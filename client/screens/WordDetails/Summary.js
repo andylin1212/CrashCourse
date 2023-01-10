@@ -8,8 +8,8 @@ function Summary({route, navigation}) {
   // .map((word) => word.replaceAll(" ", ""));
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.backBtn}>
+    <SafeAreaView style={styles.mainContainer}>
+           <View style={styles.backBtn}>
         <Button
           title="Back"
           onPress={() => {
@@ -18,6 +18,10 @@ function Summary({route, navigation}) {
             // })
         })}}>Back</Button>
       </View>
+
+
+    <View style={styles.container}>
+
 
       <View style={styles.summaryContainer}>
         <Text style={styles.header}>Key Points</Text>
@@ -45,19 +49,25 @@ function Summary({route, navigation}) {
         )}
         </View>
       </View>
+    </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  mainContainer: {
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'flex-start',
+    backgroundColor: '#eefcfc'
+  },
+  container: {
+    flex: 0.9,
+    alignItems: 'center',
     justifyContent: 'space-between',
-    position: 'relative'
   },
   summaryContainer: {
-    flex: 3,
+    flex: 3.6,
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingVertical: 15,
