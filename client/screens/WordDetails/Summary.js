@@ -9,7 +9,7 @@ function Summary({route, navigation}) {
 
   return (
     <SafeAreaView style={styles.mainContainer}>
-           <View style={styles.backBtn}>
+      <View style={styles.backBtn}>
         <Button
           title="Back"
           onPress={() => {
@@ -20,36 +20,34 @@ function Summary({route, navigation}) {
       </View>
 
 
-    <View style={styles.container}>
+      <View style={styles.container}>
+        <View style={styles.summaryContainer}>
+          <Text style={styles.header}>Key Points</Text>
+          {summary.map((text)=>
+            <KeyPoint key={text[0]} text={text}></KeyPoint>
+            // <Text key={sentence} >{sentence}</Text>
+          )}
+        </View>
 
+        {/* <View style={styles.wordsContainer}>
+          {relatedWords.slice(1,6).map((word)=>
+            <View key={word} style={styles.relatedWords}>
+              <Text style={{ color: 'white', textAlign: 'center'}} key={word}>{word} </Text>
+            </View>
+          )}
+        </View> */}
 
-      <View style={styles.summaryContainer}>
-        <Text style={styles.header}>Key Points</Text>
-        {summary.map((text)=>
-          <KeyPoint key={text[0]} text={text}></KeyPoint>
-          // <Text key={sentence} >{sentence}</Text>
-        )}
-      </View>
-
-      {/* <View style={styles.wordsContainer}>
-        {relatedWords.slice(1,6).map((word)=>
-          <View key={word} style={styles.relatedWords}>
-             <Text style={{ color: 'white', textAlign: 'center'}} key={word}>{word} </Text>
+        <View style={styles.bottomBlockContainer}>
+          <Text style={styles.header}>Related Words</Text>
+          <View style={styles.wordsContainer}>
+          {relatedWords.slice(1).map((word)=>
+            <View key={word} style={styles.relatedWords}>
+              <Text style={{ color: 'white', textAlign: 'center'}} key={word}>{word} </Text>
+            </View>
+          )}
           </View>
-        )}
-      </View> */}
-
-      <View style={styles.bottomBlockContainer}>
-        <Text style={styles.header}>Related Words</Text>
-        <View style={styles.wordsContainer}>
-        {relatedWords.slice(1).map((word)=>
-          <View key={word} style={styles.relatedWords}>
-             <Text style={{ color: 'white', textAlign: 'center'}} key={word}>{word} </Text>
-          </View>
-        )}
         </View>
       </View>
-    </View>
     </SafeAreaView>
   );
 }

@@ -79,7 +79,7 @@ export default function Search({navigation}) {
       <SafeAreaView style={styles.container}>
         <Image
           style={styles.logo}
-          source={require("../src/assets/logo.png")
+          source={require("../src/assets/logo1.png")
         }/>
         <Text>Open up App.js to start working on your app!</Text>
         <TextInput

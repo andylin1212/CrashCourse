@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import WelcomeScreen from './screens/WelcomeScreen';
+// import WelcomeScreen from './screens/WelcomeScreen';
 import SearchScreen from './screens/SearchScreen';
 import WordInfo from './screens/WordInfo'
 import LoadingAnimations from './screens/LoadingAnimations'
@@ -21,13 +21,13 @@ export default function App() {
     // </View>
     <LoadingProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName={"Welcome"}>
-          <Stack.Screen
+        <Stack.Navigator initialRouteName={"Search"}>
+          {/* <Stack.Screen
             name="Welcome"
             component={WelcomeScreen}
             options={{ headerShown: false }}
             // options={{title: "Welcome"}}
-          />
+          /> */}
           <Stack.Screen
             name="Search"
             component={SearchScreen}

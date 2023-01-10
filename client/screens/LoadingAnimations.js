@@ -40,9 +40,6 @@ export default function LoadingAnimations({route, navigation}) {
   return (
     <SafeAreaView style={styles.loadPage}>
       <Text style={styles.text}>{loadingText}</Text>
-      <TouchableOpacity style={styles.loadingDots}>
-       <Lottie source={require('../src/assets/loading-dots.json')} autoPlay loop/>
-      </TouchableOpacity>
       <Lottie source={require('../src/assets/bouncingBearLoading.json')} autoPlay loop />
     </SafeAreaView>
   );
@@ -62,8 +59,8 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: 'center',
-    top: 180,
-    fontSize: 18,
+    top: 185,
+    fontSize: 20,
     color: 'white',
     fontWeight: 'bold'
   }
