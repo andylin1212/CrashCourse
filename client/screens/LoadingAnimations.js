@@ -24,6 +24,7 @@ export default function LoadingAnimations({route, navigation}) {
       })
     } catch (err) {
       Alert.alert('Error', 'There was an error making the request');
+      navigation.navigate("Search")
     }
   }
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { StyleSheet, SafeAreaView, View,  Text, TouchableHighlight } from 'react-native';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Summary from './WordDetails/Summary'
 import Details from './WordDetails/Details'
 import Random from './WordDetails/Random'
@@ -8,8 +8,9 @@ import Story from './WordDetails/Story'
 import { Alert } from 'react-native';
 import axios from 'axios';
 import { LoadingContext } from '../context/loadingContext'
+import Icon from 'react-native-vector-icons/Ionicons';
 
-const Tab = createMaterialBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
 function WordInfo( {route}) {
   const input = route.params.input
@@ -42,11 +43,32 @@ function WordInfo( {route}) {
 
   //additional queries in the background
   useEffect (() => {
-    additionalSearch(input)
+    // additionalSearch(input)
   },[])
 
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={({route}) => ({
+        headerShown: false,
+        tabBarStyle: {
+          height: 80,
+          paddingTop: 15,
+        },
+        tabBarIcon: ({color, size, focused}) => {
+          let iconChosen;
+          if (route.name === "Summary") {
+            iconChosen = focused ? 'ios-home-sharp' : 'ios-home-outline'
+          } else if (route.name === "Details") {
+            iconChosen = focused ? 'ios-information-circle-sharp' : 'ios-information-circle-outline'
+          } else if (route.name === "Random") {
+            iconChosen = focused ? 'ios-happy' : 'ios-happy-outline'
+          } else if (route.name === "Story") {
+            iconChosen = focused ? 'book' : 'book-outline'
+          }
+          return <Icon name={iconChosen} size={22} />
+        }
+      })}
+    >
       <Tab.Screen
         name="Summary"
         component={Summary}
