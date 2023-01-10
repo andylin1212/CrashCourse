@@ -1,10 +1,15 @@
-import React, { useEffect } from 'react';
-import LottieView from 'lottie-react-native';
+import React, { useEffect, useState } from 'react';
+import Lottie from 'lottie-react-native';
 import axios from 'axios';
-import { Alert } from 'react-native';
+import { Alert, SafeAreaView, View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 export default function LoadingAnimations({route, navigation}) {
   const input = route.params.input
+  const [loadingText, setLoadingText] = useState('Generating Content')
+
+  setTimeout(() => {
+    setLoadingText("Coming through ...");
+  }, 3000);
 
   const initialSearch = async (input) => {
     try {
@@ -33,6 +38,33 @@ export default function LoadingAnimations({route, navigation}) {
   },[])
 
   return (
-    <LottieView source={require('../src/assets/bouncingBearLoading.json')} autoPlay loop />
+    <SafeAreaView style={styles.loadPage}>
+      <Text style={styles.text}>{loadingText}</Text>
+      <TouchableOpacity style={styles.loadingDots}>
+       <Lottie source={require('../src/assets/loading-dots.json')} autoPlay loop/>
+      </TouchableOpacity>
+      <Lottie source={require('../src/assets/bouncingBearLoading.json')} autoPlay loop />
+    </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  loadingDots: {
+    zIndex: 4,
+    top: 180,
+  },
+  loadPage : {
+    height: '100%',
+    backgroundColor: 'dodgerblue',
+    // alignItems: 'center',
+    justifyContent: 'center',
+    // resizeMode: 'cover'
+  },
+  text: {
+    textAlign: 'center',
+    top: 180,
+    fontSize: 18,
+    color: 'white',
+    fontWeight: 'bold'
+  }
+});
