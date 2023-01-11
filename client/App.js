@@ -6,7 +6,6 @@ import { StyleSheet, ImageBackground, View, Text } from 'react-native';
 import SearchScreen from './screens/SearchScreen';
 import WordInfo from './screens/WordInfo'
 import LoadingAnimations from './screens/LoadingAnimations'
-import SplashScreen from './components/SplashScreen'
 import { LoadingProvider } from './context/loadingContext.js'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack';
@@ -27,19 +26,13 @@ export default function App() {
       <SafeAreaProvider>
         {/* <SplashScreen></SplashScreen> */}
         <NavigationContainer>
-          <Stack.Navigator initialRouteName={"Splash"}>
+          <Stack.Navigator initialRouteName={"Search"}>
             {/* <Stack.Screen
               name="Welcome"
               component={WelcomeScreen}
               options={{ headerShown: false }}
               // options={{title: "Welcome"}}
             /> */}
-
-            <Stack.Screen
-            name="Splash"
-            component={SplashScreen}
-            options={{ headerShown: false }}
-            />
             <Stack.Screen
               name="Search"
               component={SearchScreen}

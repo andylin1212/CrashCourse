@@ -6,10 +6,21 @@ import Lottie from 'lottie-react-native';
 import LoadingAnimations from './LoadingAnimations'
 import axios from 'axios';
 import { LoadingContext } from '../context/loadingContext'
+import * as Animatable from 'react-native-animatable';
 
+const logoAnimation = {0: {translateY: 300, scale: 1}, 0.8: {translateY: 300, scale: 1}, 1: {translateY: 200, scale: 0.8}}
+
+const inputAnimation = {0: {opacity:0, translateY: 100}, 0.8: { opacity: 0, translateY: 100}, 1: {opacity: 1, translateY: -50}}
 
 export default function Search({navigation}) {
   const [input, setInput] = useState('');
+  const logoRef = useRef(null);
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    logoRef.current.animate(logoAnimation);
+    inputRef.current.animate(inputAnimation)
+  },[logoRef])
   // const [summary, setSummary] = useState('');
   // const [isLoading, setIsLoading] = useState(true);
   // const [relatedWords, setRelatedWords] = useState('');
@@ -77,22 +88,30 @@ export default function Search({navigation}) {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <SafeAreaView style={styles.container}>
-        <Image
+        <Animatable.Image
+          ref={logoRef}
           style={styles.logo}
-          source={require("../src/assets/logo1.png")
-        }/>
-        <Text>Open up App.js to start working on your app!</Text>
-        <TextInput
-          placeholder = "enter something"
-          value = {input}
-          onChangeText={text => setInput(text)}
-          style={styles.input}
+          duration={4500}
+          // easing='ease-in-out'
+          source={require("../src/assets/logo1.png")}
         />
-        <Button
-          title="Submit"
-          onPress={handleSubmit}
-        />
-        <StatusBar style="auto" />
+        <Animatable.View
+          ref={inputRef}
+          style={styles.inputContainer}
+          duration={4500}>
+          <Text>Open up App.js to start working on your app!</Text>
+          <TextInput
+            placeholder = "enter something"
+            value = {input}
+            onChangeText={text => setInput(text)}
+            style={styles.input}
+          />
+          <Button
+            title="Submit"
+            onPress={handleSubmit}
+          />
+          <StatusBar style="auto" />
+        </Animatable.View>
       </SafeAreaView>
     </TouchableWithoutFeedback>
   );
@@ -103,7 +122,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'dodgerblue',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
   },
   input: {
     fontSize: 20,
@@ -117,17 +136,22 @@ const styles = StyleSheet.create({
     padding: 10,
     width: 200,
   },
-  loadPage : {
-    flex: 1,
-    backgroundColor: 'dodgerblue',
-    alignItems: 'center',
-    justifyContent: 'center',
-    resizeMode: 'cover'
-  },
+  // loadPage : {
+  //   flex: 1,
+  //   backgroundColor: 'dodgerblue',
+  //   alignItems: 'center',
+  //   justifyContent: 'space-between',
+  //   resizeMode: 'cover'
+  // },
   logo: {
-    flex: 0.5,
+    flex: 0.3,
     width: 300,
     height: 50,
     resizeMode: 'contain'
+  },
+  inputContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   }
 });
