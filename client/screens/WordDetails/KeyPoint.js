@@ -3,17 +3,17 @@ import { View, Text, StyleSheet } from 'react-native'
 
 const regEX = /[.):]/g;
 function KeyPoint(props) {
-  const sentence = props.text.split(".", 3);
-  const style = props.style;
-  const num = sentence[0];
-  const content = sentence.slice(1).join('.');
+  const [num , ...content] = props.text.split(".", 3);
+  const selectedStyle = props.style ? styles.circle : styles.square
+  // const num = sentence[0];
+  const sentence = content.join('.').trim().replace(/\s+/g, ' ');
 
   return (
    <View style={[styles.keyPointContainer, styles.shadowProp]}>
-      <View style={style ? styles.circle : styles.square}>
+      <View style={[selectedStyle, {backgroundColor: props.color} ]}>
         <Text style={{ color: 'white', textAlign: 'center'}}>{num}</Text>
       </View>
-      <Text style={styles.text}>{content}</Text>
+      <Text style={styles.text}>{sentence}</Text>
    </View>
   );
 }
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     opacity: 0.6
   },
   text: {
-    maxWidth: '83%'
+    maxWidth: '83%',
   },
   shadowProp: {
     shadowColor: '#171717',

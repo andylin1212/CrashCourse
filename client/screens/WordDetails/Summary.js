@@ -24,7 +24,7 @@ function Summary({route, navigation}) {
         <View style={styles.summaryContainer}>
           <Text style={styles.header}>Key Points</Text>
           {summary.map((text)=>
-            <KeyPoint key={text[0]} text={text}></KeyPoint>
+            <KeyPoint key={text[0]} text={text} color={'blue'}></KeyPoint>
             // <Text key={sentence} >{sentence}</Text>
           )}
         </View>

@@ -43,8 +43,8 @@ const TabButton = (props) => {
           style={styles.btn}>
           <Animatable.View
             ref={btnRef}
-            style={{...StyleSheet.absoluteFillObject, backgroundColor: 'blue', borderRadius: 20}}/>
-          <Icon type={item.type} name={focused ? item.activeIcon : item.inactiveIcon} color={ focused ? 'white' : 'blue'}/>
+            style={{...StyleSheet.absoluteFillObject, backgroundColor: '#2f6783', borderRadius: 20}}/>
+          <Icon type={item.type} name={focused ? item.activeIcon : item.inactiveIcon} color={ focused ? 'white' : '#2f6783'}/>
         </View>
         <Animatable.Text
           style={styles.btnText}
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
   btnText: {
     fontSize: 7,
-    color: 'blue',
+    color: '#2f6783',
     textAlign: 'center'
   }
 })

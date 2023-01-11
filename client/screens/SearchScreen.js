@@ -101,7 +101,7 @@ export default function Search({navigation}) {
           duration={4500}>
           <Text>Open up App.js to start working on your app!</Text>
           <TextInput
-            placeholder = "enter something"
+            placeholder = "search me..."
             value = {input}
             onChangeText={text => setInput(text)}
             style={styles.input}

@@ -45,7 +45,7 @@ function WordInfo( {route}) {
 
   //additional queries in the background
   useEffect (() => {
-    // additionalSearch(input)
+    additionalSearch(input)
     console.log('rerendered')
   },[])
 

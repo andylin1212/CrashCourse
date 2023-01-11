@@ -92,9 +92,9 @@ app.post('/interesting-facts', async (req, res) => {
     const prompt = req.body.prompt;
     const response = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: `Give me three of the most interesting facts about ${prompt} that not many know about. short sentences`,
+      prompt: `Give me three of the most interesting facts about ${prompt} that not many know about. short sentences and numerically labeled with 1., 2., 3.`,
       temperature: 1,
-      max_tokens: 400,
+      max_tokens: 350,
       top_p: 0.97,
       frequency_penalty: 0.7,
       presence_penalty: 1.59,
@@ -114,9 +114,9 @@ app.post('/questions', async (req, res) => {
     const prompt = req.body.prompt;
     const response = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: `two engaging questions to show understanding about ${prompt}`,
+      prompt: `two engaging questions to show understanding about ${prompt}. short sentences and numerically labeled with 1., 2.`,
       temperature: 1,
-      max_tokens: 400,
+      max_tokens: 350,
       top_p: 1,
       frequency_penalty: 0.8,
       presence_penalty: 0.82,
@@ -142,6 +142,28 @@ app.post('/joke', async (req, res) => {
       top_p: 0.51,
       frequency_penalty: 0.5,
       presence_penalty: 0.6,
+    });
+    console.log(response.data.choices[0].text)
+    res.status(200).json({
+      message: response.data.choices[0].text
+    })
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ error })
+  }
+})
+
+app.post('/story', async (req, res) => {
+  try {
+    const prompt = req.body.prompt;
+    const response = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: `Tell me an interesting and relatable personal story about ${prompt} in a first person POV `,
+      temperature: 0.88,
+      max_tokens: 500,
+      top_p: 0.75,
+      frequency_penalty: 0.35,
+      presence_penalty: 0.4,
     });
     console.log(response.data.choices[0].text)
     res.status(200).json({
