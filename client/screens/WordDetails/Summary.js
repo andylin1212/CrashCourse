@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView, View,  Text, TouchableOpacity, Button, ScrollView, Image} from 'react-native';
+import { StyleSheet, View,  Text, TouchableOpacity, Button, ScrollView, Image} from 'react-native';
 import KeyPoint from './KeyPoint'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { StatusBar } from 'expo-status-bar';
@@ -9,7 +9,6 @@ import GlobalStyles from '../../src/utils/GlobalStyles'
 function Summary({route, navigation}) {
   const summary = route.params.summary.split('\n').filter(word => word.length !== 0);
   const relatedWords = route.params.relatedWords.split(/[,;.]/g).filter(word => word.length !== 0);
-  // .map((word) => word.replaceAll(" ", ""));
 
   const handleRelatedWordsSearch = (word) => {
     navigation.navigate("Loading", { input: word })
@@ -34,7 +33,6 @@ function Summary({route, navigation}) {
             style={styles.scrollViewContainer}>
           {summary.map((text)=>
             <KeyPoint key={text[0]} text={text} color={'blue'}></KeyPoint>
-            // <Text key={sentence} >{sentence}</Text>
           )}
           </ScrollView>
         </View>

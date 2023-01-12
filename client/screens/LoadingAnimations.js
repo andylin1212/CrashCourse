@@ -15,11 +15,6 @@ export default function LoadingAnimations({route, navigation}) {
     try {
       const summaryResponse = await axios.post(`http://192.168.1.4:5000/summary`, {prompt: input})
       const relatedWordsResponse = await axios.post(`http://192.168.1.4:5000/related-words`, {prompt:input})
-      // const detailsResponse = await axios.post(`http://192.168.1.4:5000/details`, {prompt:input})
-
-      // console.log('summary', summaryResponse.data.message)
-      // console.log('relatedWords', relatedWordsResponse.data.message)
-      // console.log('details', detailsResponse.data.message)
 
       navigation.navigate("Info", {
         input: input,

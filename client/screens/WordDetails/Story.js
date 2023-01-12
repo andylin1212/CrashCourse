@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { StyleSheet, SafeAreaView, View,  Text, TouchableOpacity, Button, Alert, ScrollView, Image} from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Button, Alert, ScrollView, Image} from 'react-native';
 import Lottie from 'lottie-react-native';
 import axios from 'axios';
 import Icon from 'react-native-vector-icons/Ionicons';

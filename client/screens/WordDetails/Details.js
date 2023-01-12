@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext} from 'react';
-import { StyleSheet, SafeAreaView, View,  Text, TouchableOpacity, Button, Image, ScrollView } from 'react-native';
+import { StyleSheet, View,  Text, TouchableOpacity, Button, Image, ScrollView } from 'react-native';
 import { LoadingContext } from '../../context/loadingContext'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { StatusBar } from 'expo-status-bar';
 import GlobalStyles from '../../src/utils/GlobalStyles'
-
 
 
 export default function Details({ route, navigation }) {

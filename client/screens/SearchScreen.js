@@ -1,10 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect, useRef, useContext } from 'react';
-import { StyleSheet, Text, TextInput, TouchableHighlight, View, Image, SafeAreaView, Pressable, Alert, TouchableWithoutFeedback, Keyboard, ImageBackground} from 'react-native';
-import { useDimensions, useDeviceOrientation } from '@react-native-community/hooks';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View, Image, SafeAreaView, Alert, TouchableWithoutFeedback, Keyboard} from 'react-native';
 import Lottie from 'lottie-react-native';
 import LoadingAnimations from './LoadingAnimations'
-import axios from 'axios';
 import { LoadingContext } from '../context/loadingContext'
 import * as Animatable from 'react-native-animatable';
 import GlobalStyles from '../src/utils/GlobalStyles'
@@ -24,69 +22,19 @@ export default function Search({navigation}) {
     logoRef.current.animate(logoAnimation);
     inputRef.current.animate(inputAnimation)
   },[logoRef])
-  // const [summary, setSummary] = useState('');
-  // const [isLoading, setIsLoading] = useState(true);
-  // const [relatedWords, setRelatedWords] = useState('');
-  // const {isLoading, setIsLoading} = useContext(LoadingContext);
-
-  // const animationRef = useRef()
-
-  // useEffect(() => {
-  //   console.log(isLoading)
-  //   animationRef.current?.play();
-  // }, [isLoading])
-
-  // const loadPageHandler = () => {
-  //   setIsLoading(true);
-  //   setTimeout(() => {
-  //     setIsLoading(false)
-  //   }, 8000)
-  // }
-
-  // const finishLoad = () => {
-  //   setIsLoading(false);
-  //   setInput('');
-  // }
 
   const handleSubmit = async () => {
-    // console.log(input)
-    Keyboard.dismiss();
-    navigation.navigate("Loading", {
-      input: input,
-    })
-    setInput('');
-    // try {
-      // loadPageHandler();
-
-    //   const summaryResponse = await axios.post(`http://192.168.1.4:5000/summary`, {prompt: input})
-    //   const relatedWordsResponse = await axios.post(`http://192.168.1.4:5000/related-words`, {prompt:input})
-    //   // const detailsResponse = await axios.post(`http://192.168.1.4:5000/details`, {prompt:input})
-
-    //   console.log('summary', summaryResponse.data.message)
-    //   console.log('relatedWords', relatedWordsResponse.data.message)
-    //   // console.log('details', detailsResponse.data.message)
-
-    //   finishLoad();
-    //   navigation.navigate("Info", {
-    //     input: input,
-    //     summary: summaryResponse.data.message,
-    //     relatedWords: relatedWordsResponse.data.message,
-    //     // details: detailsResponse.data.message
-    //   })
-    // } catch (err) {
-    //   Alert.alert('Error', 'There was an error making the request');
-    // }
+    if (!input) {
+      Alert.alert('Error', 'No search term provided!');
+    } else {
+      Keyboard.dismiss();
+      navigation.navigate("Loading", {
+        input: input,
+      })
+      setInput('');
+    }
   };
 
-  // if (isLoading) {
-  //   return (
-  //     <View style={styles.loadPage}>
-  //       <Lottie
-  //         ref={animationRef}
-  //         source={require('../src/assets/bouncingBearLoading.json')} autoPlay loop/>
-  //     </View>
-  //   )
-  // }
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -110,12 +58,12 @@ export default function Search({navigation}) {
             onChangeText={text => setInput(text)}
             style={styles.input}
           />
-          <Pressable
+          <TouchableOpacity
             title="Submit"
             style={[GlobalStyles.textFont, styles.submitBtn]}
             onPress={handleSubmit}>
             <Text style={[GlobalStyles.textFont]}>Submit</Text>
-          </Pressable>
+          </TouchableOpacity>
           <StatusBar style="auto" />
         </Animatable.View>
       </SafeAreaView>
@@ -142,13 +90,6 @@ const styles = StyleSheet.create({
     padding: 10,
     width: 200,
   },
-  // loadPage : {
-  //   flex: 1,
-  //   backgroundColor: 'dodgerblue',
-  //   alignItems: 'center',
-  //   justifyContent: 'space-between',
-  //   resizeMode: 'cover'
-  // },
   logo: {
     flex: 0.3,
     width: 300,
