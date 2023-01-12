@@ -25,7 +25,7 @@ export default function Details({ route, navigation }) {
       <View style={styles.container}>
         <Text style={[GlobalStyles.headerFont, styles.header]}>Details</Text>
         <View style={styles.detailsContainer}>
-          <ScrollView>
+          <ScrollView style={styles.scrollViewContainer}>
             <Text style={GlobalStyles.textFont}>{details}</Text>
           </ScrollView>
         </View>
@@ -89,5 +89,8 @@ const styles = StyleSheet.create({
     // marginTop: 30,
     marginBottom: 15,
     fontSize: 30,
+  },
+  scrollViewContainer: {
+    padding: 15
   }
 })

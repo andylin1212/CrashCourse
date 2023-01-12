@@ -25,16 +25,20 @@ function WordInfo( {route}) {
 
   const additionalSearch = async (input) => {
     try {
+      const detailsResponse = await axios.post(`http://192.168.1.4:5000/details`, {prompt:input})
+
+      setDetails(detailsResponse.data.message);
+
       const interestingResponse = await axios.post(`http://192.168.1.4:5000/interesting-facts`, {prompt: input})
       const questionResponse = await axios.post(`http://192.168.1.4:5000/questions`, {prompt: input})
       const jokeResponse = await axios.post(`http://192.168.1.4:5000/joke`, {prompt: input})
-      const detailsResponse = await axios.post(`http://192.168.1.4:5000/details`, {prompt:input})
+
 
       const interestingResReformatted = interestingResponse.data.message.split('\n').filter(word => word.length !== 0);
       const questionResReformatted = questionResponse.data.message.split('\n').filter(word => word.length !== 0);
       const jokeResReformatted = jokeResponse.data.message.split('\n').filter(word => word.length !== 0);
 
-      setDetails(detailsResponse.data.message);
+
       setOtherInfo([interestingResReformatted, questionResReformatted, jokeResReformatted]);
 
     } catch (err) {

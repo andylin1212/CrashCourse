@@ -4,6 +4,7 @@ import { LoadingContext } from '../../context/loadingContext'
 import KeyPoint from './KeyPoint';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { StatusBar } from 'expo-status-bar';
+import GlobalStyles from '../../src/utils/GlobalStyles'
 
 function Random({route, navigation}) {
   const { otherInfo } = useContext(LoadingContext);
@@ -21,7 +22,7 @@ function Random({route, navigation}) {
 
       <View style={styles.container}>
         <View style={styles.interestingFactsContainer}>
-          <Text style={styles.header}>Interesting Facts</Text>
+          <Text style={[GlobalStyles.headerFont, styles.header]}>Interesting Facts</Text>
           <ScrollView horizontal={false}
           style={styles.scrollViewContainer}
           contentContainerStyle={{alignItems: 'center'}}>
@@ -32,7 +33,7 @@ function Random({route, navigation}) {
         </View>
 
         <View style={styles.questionsContainer}>
-          <Text style={styles.header}>Questions to Ask</Text>
+          <Text style={[GlobalStyles.headerFont, styles.header]}>Questions to Ask</Text>
           <ScrollView horizontal={false}
           style={styles.scrollViewContainer}
           contentContainerStyle={{alignItems: 'center'}}>
@@ -43,9 +44,9 @@ function Random({route, navigation}) {
         </View>
 
         <View style={styles.jokesContainer}>
-          <Text style={styles.header}>Random Joke</Text>
-          <Text>usually of the "dad" variety</Text>
-          <Text style={styles.jokeTextContainer}>
+          <Text style={[GlobalStyles.headerFont, styles.header]}>Random Joke</Text>
+          <Text style={GlobalStyles.textFont}>usually of the "dad" variety</Text>
+          <Text style={[GlobalStyles.textFont, styles.jokeTextContainer]}>
             {otherInfo[2].join('\n')}
           </Text>
         </View>

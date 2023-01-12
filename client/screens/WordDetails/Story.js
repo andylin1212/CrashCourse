@@ -4,6 +4,7 @@ import Lottie from 'lottie-react-native';
 import axios from 'axios';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { StatusBar } from 'expo-status-bar';
+import GlobalStyles from '../../src/utils/GlobalStyles'
 
 function Story({ route, navigation }) {
   const input = route.params.input;
@@ -113,9 +114,9 @@ function Story({ route, navigation }) {
       </View>
 
       <View style={styles.container}>
-        <Text style={styles.header}>Story</Text>
+        <Text style={[GlobalStyles.headerFont, styles.header]}>Story</Text>
         <ScrollView style={styles.storyContainer}>
-          <Text style={styles.storyText}>
+          <Text style={[GlobalStyles.textFont, styles.storyText]}>
             {text}
             <Text style={{color: cursorStatus, fontSize: 16}}>|</Text>
           </Text>
@@ -184,7 +185,7 @@ const styles = StyleSheet.create({
   },
   header: {
     marginBottom: 15,
-    fontSize: 26,
+    fontSize: 28,
   },
   storyText: {
     padding: 15,

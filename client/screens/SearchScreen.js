@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect, useRef, useContext } from 'react';
-import { StyleSheet, Text, TextInput, TouchableHighlight, View, Image, SafeAreaView, Button, Alert, TouchableWithoutFeedback, Keyboard, ImageBackground} from 'react-native';
+import { StyleSheet, Text, TextInput, TouchableHighlight, View, Image, SafeAreaView, Pressable, Alert, TouchableWithoutFeedback, Keyboard, ImageBackground} from 'react-native';
 import { useDimensions, useDeviceOrientation } from '@react-native-community/hooks';
 import Lottie from 'lottie-react-native';
 import LoadingAnimations from './LoadingAnimations'
@@ -110,11 +110,12 @@ export default function Search({navigation}) {
             onChangeText={text => setInput(text)}
             style={styles.input}
           />
-          <Button
+          <Pressable
             title="Submit"
-            style={GlobalStyles.textFont}
-            onPress={handleSubmit}
-          />
+            style={[GlobalStyles.textFont, styles.submitBtn]}
+            onPress={handleSubmit}>
+            <Text style={[GlobalStyles.textFont]}>Submit</Text>
+          </Pressable>
           <StatusBar style="auto" />
         </Animatable.View>
       </SafeAreaView>
@@ -158,5 +159,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  submitBtn: {
+    backgroundColor: 'white',
+    padding: 5,
+    borderRadius: 10,
   }
 });
