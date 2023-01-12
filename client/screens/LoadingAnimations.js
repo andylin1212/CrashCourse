@@ -34,8 +34,9 @@ export default function LoadingAnimations({route, navigation}) {
   }
 
   useEffect (() => {
+    setLoadingText('Generating Content')
     initialSearch(input)
-  },[])
+  },[input])
 
   return (
     <SafeAreaView style={styles.loadPage}>

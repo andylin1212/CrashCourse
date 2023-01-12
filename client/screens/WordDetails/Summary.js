@@ -1,11 +1,15 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView, View,  Text, TouchableHighlight, Button } from 'react-native';
+import { StyleSheet, SafeAreaView, View,  Text, TouchableOpacity, Button} from 'react-native';
 import KeyPoint from './KeyPoint'
 
 function Summary({route, navigation}) {
   const summary = route.params.summary.split('\n').filter(word => word.length !== 0);
   const relatedWords = route.params.relatedWords.split(/[,;.]/g).filter(word => word.length !== 0);
   // .map((word) => word.replaceAll(" ", ""));
+
+  const handleRelatedWordsSearch = (word) => {
+    navigation.navigate("Loading", { input: word })
+  }
 
   return (
     <SafeAreaView style={styles.mainContainer}>
@@ -39,11 +43,16 @@ function Summary({route, navigation}) {
 
         <View style={styles.bottomBlockContainer}>
           <Text style={styles.header}>Related Words</Text>
+          <Text>click on below words to search</Text>
           <View style={styles.wordsContainer}>
           {relatedWords.slice(1).map((word)=>
-            <View key={word} style={styles.relatedWords}>
+            <TouchableOpacity
+              key={word}
+              onPress={() => handleRelatedWordsSearch(word)}
+              style={styles.relatedWords}>
               <Text style={{ color: 'white', textAlign: 'center'}} key={word}>{word} </Text>
-            </View>
+            </TouchableOpacity>
+
           )}
           </View>
         </View>
@@ -63,6 +72,7 @@ const styles = StyleSheet.create({
     flex: 0.9,
     alignItems: 'center',
     justifyContent: 'space-between',
+    width: '100%'
   },
   summaryContainer: {
     flex: 3.6,
@@ -70,7 +80,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingVertical: 15,
     paddingHorizontal: 15,
-    width: '90%',
+    width: '95%',
     // marginBottom: 15,
   },
   shadowProp: {
@@ -88,6 +98,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     flexDirection: 'column',
+    width: '100%'
   },
   wordsContainer: {
     flex: 1,

@@ -4,7 +4,7 @@ import { StyleSheet, SafeAreaView, View,  Text, TouchableHighlight, Button } fro
 const chunkText = "You don't necessarily need the react-native-animatable library to create the animation of text being typed out in React Native. The animated library, which is built into React Native, provides a powerful set of tools for creating animations using JavaScript. However, react-native-animatable is a popular library that provides a set of pre-built animations that you can use in your React Native apps. It provides a Animatable.Text component that you can use to animate text, among other things. It also provides a simple API for creating custom animations and making it easy to apply animations to your components."
 
 
-export default function Details({ route }) {
+export default function Details({ route, navigation }) {
 
 
   return (

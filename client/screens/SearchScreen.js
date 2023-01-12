@@ -12,6 +12,8 @@ const logoAnimation = {0: {translateY: 300, scale: 1}, 0.8: {translateY: 300, sc
 
 const inputAnimation = {0: {opacity:0, translateY: 100}, 0.8: { opacity: 0, translateY: 100}, 1: {opacity: 1, translateY: -50}}
 
+const loadDuration = 4000;
+
 export default function Search({navigation}) {
   const [input, setInput] = useState('');
   const logoRef = useRef(null);
@@ -91,15 +93,15 @@ export default function Search({navigation}) {
         <Animatable.Image
           ref={logoRef}
           style={styles.logo}
-          duration={4500}
+          duration={loadDuration}
           // easing='ease-in-out'
           source={require("../src/assets/logo1.png")}
         />
         <Animatable.View
           ref={inputRef}
           style={styles.inputContainer}
-          duration={4500}>
-          <Text>Open up App.js to start working on your app!</Text>
+          duration={loadDuration}>
+          <Text>What do you NEED to know about right now?</Text>
           <TextInput
             placeholder = "search me..."
             value = {input}
