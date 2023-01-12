@@ -1,7 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { StyleSheet, SafeAreaView, View,  Text, TouchableHighlight, Button, Alert, ScrollView} from 'react-native';
+import { StyleSheet, SafeAreaView, View,  Text, TouchableOpacity, Button, Alert, ScrollView, Image} from 'react-native';
 import Lottie from 'lottie-react-native';
 import axios from 'axios';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { StatusBar } from 'expo-status-bar';
 
 const chunkText = "You don't necessarily need the react-native-animatable library to create the animation of text being typed out in React Native. The animated library, which is built into React Native, provides a powerful set of tools for creating animations using JavaScript. However, react-native-animatable is a popular library that provides a set of pre-built animations that you can use in your React Native apps. It provides a Animatable.Text component that you can use to animate text, among other things. It also provides a simple API for creating custom animations and making it easy to apply animations to your components."
 
@@ -85,34 +87,34 @@ function Story({ route, navigation }) {
 
   if (isLoading) {
     return (
-      <SafeAreaView style={styles.mainContainer}>
-      <View style={styles.backBtn}>
-       <Button
-         title="Back"
-         onPress={() => {
-         navigation.navigate("Search", {
-           //   input: input,
-           // })
-       })}}>Back</Button>
+      <View style={styles.mainContainer}>
+        <View style={styles.topBarContainer}>
+        <TouchableOpacity style={styles.backBtn}
+          onPress={() => {
+            navigation.navigate("Search")}}>
+          <Icon name='Back-to-Search' type={Icon.Ionicons} name='ios-search-sharp' size={24} color='white' />
+        </TouchableOpacity>
+        <Image style={styles.miniLogo} source={require("../../src/assets/logo1-mini.png")} />
+      </View>
+
+      <View style={styles.container}>
+        <Lottie source={require('../../src/assets/loading.json')} autoPlay loop />
+      </View>
      </View>
-     <View style={styles.container}>
-       <Lottie source={require('../../src/assets/loading.json')} autoPlay loop />
-     </View>
-   </SafeAreaView>
     )
   }
 
   return (
-    <SafeAreaView style={styles.mainContainer}>
-       <View style={styles.backBtn}>
-        <Button
-          title="Back"
+    <View style={styles.mainContainer}>
+      <View style={styles.topBarContainer}>
+        <TouchableOpacity style={styles.backBtn}
           onPress={() => {
-          navigation.navigate("Search", {
-            //   input: input,
-            // })
-        })}}>Back</Button>
+            navigation.navigate("Search")}}>
+          <Icon name='Back-to-Search' type={Icon.Ionicons} name='ios-search-sharp' size={24} color='white' />
+        </TouchableOpacity>
+        <Image style={styles.miniLogo} source={require("../../src/assets/logo1-mini.png")} />
       </View>
+
       <View style={styles.container}>
         <Text style={styles.header}>Story</Text>
         <ScrollView style={styles.storyContainer}>
@@ -132,7 +134,8 @@ function Story({ route, navigation }) {
             }}
           ></Button>
       </View>
-    </SafeAreaView>
+      <StatusBar style='light' />
+    </View>
   );
 }
 
@@ -146,38 +149,45 @@ const styles = StyleSheet.create({
     backgroundColor: '#eefcfc',
   },
   container: {
-    flex: 0.85,
-    top: 30,
+    flex: 0.75,
+    top: 15,
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: '90%',
+    width: '100%',
+
     // borderColor: 'blue',
     // borderWidth: 2,
   },
   storyContainer: {
-    flex: 1,
+    flex: 0.6,
     borderRadius: 15,
     paddingBottom: 15,
     backgroundColor: 'white',
     borderColor: 'black',
     borderWidth: 2,
-    shadowColor: '#171717',
-    shadowOffset: {width: -2, height: 4},
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-    width: '93%'
+    width: '90%',
+  },
+  topBarContainer: {
+    flex: 0.1,
+    backgroundColor: "#2f6783",
+    width: '100%',
+    justifyContent: 'center',
+  },
+  miniLogo: {
+    width: 40,
+    height: 35,
+    top: "5%",
+    left: "44%"
   },
   backBtn: {
-    position: 'absolute',
-    top: 55,
-    left: 20,
-    zIndex: 3,  //works for IOS
-    elevation: 3,  //works on Android
+    top: 35,
+    left: 15,
+    zIndex: 4,  //works for IOS
+    elevation: 4,  //works on Android
   },
   header: {
-    // marginTop: 30,
     marginBottom: 15,
-    fontSize: 30,
+    fontSize: 26,
   },
   storyText: {
     padding: 15,

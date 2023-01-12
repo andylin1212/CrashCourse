@@ -63,29 +63,6 @@ function WordInfo( {route}) {
       screenOptions={({route}) => ({
         headerShown: false,
         tabBarStyle: styles.tabBarStyle,
-        //   tabBarIcon: ({color, size, focused}) => {
-        //   let iconChosen;
-        //   if (route.name === "Summary") {
-        //     iconChosen = focused ? 'ios-home-sharp' : 'ios-home-outline'
-        //   } else if (route.name === "Details") {
-        //     iconChosen = focused ? 'ios-information-circle-sharp' : 'ios-information-circle-outline'
-        //   } else if (route.name === "Random") {
-        //     iconChosen = focused ? 'ios-happy' : 'ios-happy-outline'
-        //   } else if (route.name === "Story") {
-        //     iconChosen = focused ? 'book' : 'book-outline'
-        //   }
-        //   return (
-        //     <TouchableOpacity>
-        //       <Animatable.View
-        //         ref={viewRef}
-        //         style={styles.btn}
-        //       >
-        //         <Icon name={iconChosen} size={22} color={color} />
-        //       </Animatable.View>
-        //     </TouchableOpacity>
-        //   )
-        // },
-        // tabBarButton: (props) => <TabButton {...props} item={item} />
       })}>
       {TabArr.map((item, index) => {
         return (
@@ -98,42 +75,8 @@ function WordInfo( {route}) {
           />
         )
       })}
-      {/* <Tab.Screen
-        name="Summary"
-        component={Summary}
 
-        initialParams ={{
-            input: input,
-            summary: summary,
-            relatedWords: relatedWords
-        }}
-      />
-      <Tab.Screen
-        name="Details"
-        component={Details}
-        initialParams ={{
-            input: input,
-            details: details
-        }}
-      />
-      <Tab.Screen
-        name="Random"
-        component={Random}
-        initialParams ={{
-            input: input
-        }}
-      />
-      <Tab.Screen
-        name="Story"
-        component={Story}
-        initialParams ={{
-            input: input,
-        }}
-      /> */}
     </Tab.Navigator>
-    // <SafeAreaView>
-    //   <Text>WordInfo</Text>
-    // </SafeAreaView>
   );
 }
 

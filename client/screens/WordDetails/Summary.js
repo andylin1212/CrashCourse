@@ -1,6 +1,9 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView, View,  Text, TouchableOpacity, Button} from 'react-native';
+import { StyleSheet, SafeAreaView, View,  Text, TouchableOpacity, Button, ScrollView, Image} from 'react-native';
 import KeyPoint from './KeyPoint'
+import Icon from 'react-native-vector-icons/Ionicons';
+import { StatusBar } from 'expo-status-bar';
+
 
 function Summary({route, navigation}) {
   const summary = route.params.summary.split('\n').filter(word => word.length !== 0);
@@ -12,25 +15,27 @@ function Summary({route, navigation}) {
   }
 
   return (
-    <SafeAreaView style={styles.mainContainer}>
-      <View style={styles.backBtn}>
-        <Button
-          title="Back"
-          onPress={() => {
-          navigation.navigate("Search", {
-            //   input: input,
-            // })
-        })}}>Back</Button>
+    <View style={styles.mainContainer}>
+      <View style={styles.topBarContainer}>
+          <TouchableOpacity style={styles.backBtn}
+            onPress={() => {
+              navigation.navigate("Search")}}>
+            <Icon name='Back-to-Search' type={Icon.Ionicons} name='ios-search-sharp' size={24} color='white' />
+          </TouchableOpacity>
+          <Image style={styles.miniLogo} source={require("../../src/assets/logo1-mini.png")} />
       </View>
 
 
       <View style={styles.container}>
         <View style={styles.summaryContainer}>
           <Text style={styles.header}>Key Points</Text>
+          <ScrollView horizontal={false}
+            style={styles.scrollViewContainer}>
           {summary.map((text)=>
             <KeyPoint key={text[0]} text={text} color={'blue'}></KeyPoint>
             // <Text key={sentence} >{sentence}</Text>
           )}
+          </ScrollView>
         </View>
 
         {/* <View style={styles.wordsContainer}>
@@ -57,7 +62,8 @@ function Summary({route, navigation}) {
           </View>
         </View>
       </View>
-    </SafeAreaView>
+      <StatusBar style='light' />
+    </View>
   );
 }
 
@@ -68,17 +74,35 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     backgroundColor: '#eefcfc'
   },
+  topBarContainer: {
+    flex: 0.1,
+    backgroundColor: "#2f6783",
+    width: '100%',
+    justifyContent: 'center',
+  },
+  miniLogo: {
+    width: 40,
+    height: 35,
+    top: "5%",
+    left: "44%"
+  },
+  backBtn: {
+    top: 35,
+    left: 15,
+    zIndex: 4,  //works for IOS
+    elevation: 4,  //works on Android
+  },
   container: {
-    flex: 0.9,
+    flex: 0.8,
     alignItems: 'center',
-    justifyContent: 'space-between',
-    width: '100%'
+    justifyContent: 'space-around',
+    width: '100%',
   },
   summaryContainer: {
-    flex: 3.6,
+    flex: 2.8,
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: 15,
+    paddingTop: 15,
     paddingHorizontal: 15,
     width: '95%',
     // marginBottom: 15,
@@ -97,8 +121,8 @@ const styles = StyleSheet.create({
   bottomBlockContainer : {
     flex: 1,
     alignItems: 'center',
-    flexDirection: 'column',
-    width: '100%'
+    width: '100%',
+    paddingTop: 20,
   },
   wordsContainer: {
     flex: 1,
@@ -109,13 +133,6 @@ const styles = StyleSheet.create({
     // marginBottom: 10,
     // gap: 50,
   },
-  backBtn: {
-    position: 'absolute',
-    top: 55,
-    left: 20,
-    zIndex: 3,  //works for IOS
-    elevation: 3,  //works on Android
-  },
   relatedWords: {
     backgroundColor: 'dodgerblue',
     borderRadius: 8,
@@ -123,6 +140,10 @@ const styles = StyleSheet.create({
     padding: 5,
     height: 28,
     // paddingHorizontal: 10,
+  },
+  scrollViewContainer: {
+    width: '100%',
+    paddingVertical: 15,
   }
 });
 

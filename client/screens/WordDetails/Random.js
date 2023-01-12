@@ -1,21 +1,22 @@
 import React, {useContext} from 'react';
-import { StyleSheet, SafeAreaView, View,  Text, TouchableHighlight, Button, ScrollView} from 'react-native';
+import { StyleSheet, SafeAreaView, View,  Text, TouchableOpacity, Button, ScrollView, Image} from 'react-native';
 import { LoadingContext } from '../../context/loadingContext'
 import KeyPoint from './KeyPoint';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { StatusBar } from 'expo-status-bar';
 
 function Random({route, navigation}) {
   const { otherInfo } = useContext(LoadingContext);
 
   return (
-    <SafeAreaView style={styles.mainContainer}>
-      <View style={styles.backBtn}>
-        <Button
-          title="Back"
-          onPress={() => {
-          navigation.navigate("Search", {
-            //   input: input,
-            // })
-        })}}>Back</Button>
+    <View style={styles.mainContainer}>
+       <View style={styles.topBarContainer}>
+          <TouchableOpacity style={styles.backBtn}
+            onPress={() => {
+              navigation.navigate("Search")}}>
+            <Icon name='Back-to-Search' type={Icon.Ionicons} name='ios-search-sharp' size={24} color='white' />
+          </TouchableOpacity>
+          <Image style={styles.miniLogo} source={require("../../src/assets/logo1-mini.png")} />
       </View>
 
       <View style={styles.container}>
@@ -49,7 +50,8 @@ function Random({route, navigation}) {
           </Text>
         </View>
       </View>
-    </SafeAreaView>
+      <StatusBar style='light'/>
+    </View>
   );
 }
 
@@ -61,44 +63,56 @@ const styles = StyleSheet.create({
     backgroundColor: '#eefcfc'
   },
   container: {
-    flex: 0.9,
+    flex: 0.8,
     alignItems: 'center',
     justifyContent: 'space-between',
     width: '100%'
   },
   interestingFactsContainer: {
-    flex: 1.5,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingVertical: 15,
-    paddingHorizontal: 15,
-    width: '100%',
-  },
-  questionsContainer: {
-    flex: 1.5,
+    flex: 1.3,
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingTop: 15,
     paddingHorizontal: 15,
     width: '100%',
   },
-  jokesContainer: {
+  questionsContainer: {
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor:'#acd8e2',
+    paddingTop: 15,
+    paddingHorizontal: 15,
+    width: '100%',
+  },
+  jokesContainer: {
+    flex: 0.7,
+    alignItems: 'center',
     justifyContent: 'flex-start',
-    paddingVertical: 15,
+    paddingTop: 15,
     paddingHorizontal: 15,
     width: '90%',
   },
+  topBarContainer: {
+    flex: 0.1,
+    backgroundColor: "#2f6783",
+    width: '100%',
+    justifyContent: 'center',
+  },
+  miniLogo: {
+    width: 40,
+    height: 35,
+    top: "5%",
+    left: "44%"
+  },
   backBtn: {
-    position: 'absolute',
-    top: 55,
-    left: 20,
-    zIndex: 3,  //works for IOS
-    elevation: 3,  //works on Android
+    top: 35,
+    left: 15,
+    zIndex: 4,  //works for IOS
+    elevation: 4,  //works on Android
   },
   header: {
-    fontSize: 26,
+    fontSize: 24,
   },
   jokeTextContainer: {
     backgroundColor: 'white',
@@ -117,7 +131,8 @@ const styles = StyleSheet.create({
     width: '95%',
     // borderWidth: 2,
     // borderColor: 'black',
-    paddingVertical: 15,
+    paddingVertical: 10,
+    marginVertical: 15,
   }
 })
 
