@@ -4,7 +4,7 @@ import { LoadingContext } from '../../context/loadingContext'
 import KeyPoint from './KeyPoint';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { StatusBar } from 'expo-status-bar';
-import GlobalStyles from '../../src/utils/GlobalStyles'
+import GlobalStyles, { COLORS }from '../../src/utils/GlobalStyles'
 
 function Random({route, navigation}) {
   const { otherInfo } = useContext(LoadingContext);
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
   },
   topBarContainer: {
     flex: 0.1,
-    backgroundColor: "#2f6783",
+    backgroundColor: COLORS.SECONDARY,
     width: '100%',
     justifyContent: 'center',
   },

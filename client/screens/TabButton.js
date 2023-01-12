@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { StyleSheet, View,  Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import * as Animatable from 'react-native-animatable';
+import { COLORS }from '../src/utils/GlobalStyles'
 
 //button animation
 
@@ -43,8 +44,8 @@ const TabButton = (props) => {
           style={styles.btn}>
           <Animatable.View
             ref={btnRef}
-            style={{...StyleSheet.absoluteFillObject, backgroundColor: '#2f6783', borderRadius: 20}}/>
-          <Icon type={item.type} name={focused ? item.activeIcon : item.inactiveIcon} color={ focused ? 'white' : '#2f6783'}/>
+            style={{...StyleSheet.absoluteFillObject, backgroundColor: COLORS.SECONDARY, borderRadius: 20}}/>
+          <Icon type={item.type} name={focused ? item.activeIcon : item.inactiveIcon} color={ focused ? 'white' : COLORS.SECONDARY}/>
         </View>
         <Animatable.Text
           style={styles.btnText}
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
   },
   btnText: {
     fontSize: 7,
-    color: '#2f6783',
+    color: COLORS.SECONDARY,
     textAlign: 'center'
   }
 })

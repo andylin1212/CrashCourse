@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Lottie from 'lottie-react-native';
 import axios from 'axios';
 import { Alert, SafeAreaView, View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { COLORS }from '../src/utils/GlobalStyles'
 
 export default function LoadingAnimations({route, navigation}) {
   const input = route.params.input
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
   },
   loadPage : {
     height: '100%',
-    backgroundColor: 'dodgerblue',
+    backgroundColor: COLORS.PRIMARY,
     // alignItems: 'center',
     justifyContent: 'center',
     // resizeMode: 'cover'

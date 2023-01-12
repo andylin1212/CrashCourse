@@ -8,3 +8,8 @@ export default StyleSheet.create({
     fontFamily: "Nexa-Book"
   }
 });
+
+export const COLORS = {
+  PRIMARY: 'dodgerblue',
+  SECONDARY: "#2f6783"
+};

@@ -3,7 +3,7 @@ import { StyleSheet, View,  Text, TouchableOpacity, Button, ScrollView, Image} f
 import KeyPoint from './KeyPoint'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { StatusBar } from 'expo-status-bar';
-import GlobalStyles from '../../src/utils/GlobalStyles'
+import GlobalStyles, { COLORS }from '../../src/utils/GlobalStyles'
 
 
 function Summary({route, navigation}) {
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   },
   topBarContainer: {
     flex: 0.1,
-    backgroundColor: "#2f6783",
+    backgroundColor: COLORS.SECONDARY,
     width: '100%',
     justifyContent: 'center',
   },

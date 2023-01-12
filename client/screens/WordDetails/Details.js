@@ -3,7 +3,7 @@ import { StyleSheet, View,  Text, TouchableOpacity, Button, Image, ScrollView } 
 import { LoadingContext } from '../../context/loadingContext'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { StatusBar } from 'expo-status-bar';
-import GlobalStyles from '../../src/utils/GlobalStyles'
+import GlobalStyles, { COLORS }from '../../src/utils/GlobalStyles'
 
 
 export default function Details({ route, navigation }) {
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 15,
     backgroundColor: 'white',
-    borderColor: 'black',
+    borderColor: COLORS.SECONDARY,
     borderWidth: 2,
     shadowColor: '#171717',
     shadowOffset: {width: -2, height: 4},
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   },
   topBarContainer: {
     flex: 0.1,
-    backgroundColor: "#2f6783",
+    backgroundColor: COLORS.SECONDARY,
     width: '100%',
     justifyContent: 'center',
   },

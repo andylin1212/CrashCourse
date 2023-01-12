@@ -5,9 +5,9 @@ import Lottie from 'lottie-react-native';
 import LoadingAnimations from './LoadingAnimations'
 import { LoadingContext } from '../context/loadingContext'
 import * as Animatable from 'react-native-animatable';
-import GlobalStyles from '../src/utils/GlobalStyles'
+import GlobalStyles, { COLORS }from '../src/utils/GlobalStyles'
 
-const logoAnimation = {0: {translateY: 300, scale: 1}, 0.8: {translateY: 300, scale: 1}, 1: {translateY: 200, scale: 0.8}}
+const logoAnimation = {0: {translateY: 300, scale: 1.1}, 0.8: {translateY: 300, scale: 1.1}, 1: {translateY: 200, scale: 0.8}}
 
 const inputAnimation = {0: {opacity:0, translateY: 100}, 0.8: { opacity: 0, translateY: 100}, 1: {opacity: 1, translateY: -50}}
 
@@ -50,19 +50,18 @@ export default function Search({navigation}) {
           ref={inputRef}
           style={styles.inputContainer}
           duration={loadDuration}>
-          <Text style={GlobalStyles.textFont}>What do you NEED to know about right now?</Text>
+          <Text style={[GlobalStyles.headerFont, styles.subHeader]}>What do you NEED to know about right now?</Text>
           <TextInput
-            style={GlobalStyles.textFont}
             placeholder = "search me..."
             value = {input}
             onChangeText={text => setInput(text)}
-            style={styles.input}
+            style={[GlobalStyles.textFont, styles.input]}
           />
           <TouchableOpacity
             title="Submit"
-            style={[GlobalStyles.textFont, styles.submitBtn]}
+            style={[styles.submitBtn]}
             onPress={handleSubmit}>
-            <Text style={[GlobalStyles.textFont]}>Submit</Text>
+            <Text style={[GlobalStyles.headerFont], styles.btnText}>Submit</Text>
           </TouchableOpacity>
           <StatusBar style="auto" />
         </Animatable.View>
@@ -74,13 +73,14 @@ export default function Search({navigation}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'dodgerblue',
+    backgroundColor: COLORS.PRIMARY,
     alignItems: 'center',
     justifyContent: 'center',
   },
   input: {
     fontSize: 20,
-    margin: 20,
+    marginTop: 20,
+    marginBottom: 10,
     backgroundColor: 'white',
     borderRadius: 10,
     shadowColor: '#000',
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 2,
     padding: 10,
-    width: 200,
+    width: 230,
   },
   logo: {
     flex: 0.3,
@@ -101,9 +101,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  subHeader: {
+    fontSize: 16,
+  },
   submitBtn: {
-    backgroundColor: 'white',
     padding: 5,
-    borderRadius: 10,
+  },
+  btnText: {
+    color: 'white',
+    fontSize: 20,
   }
 });

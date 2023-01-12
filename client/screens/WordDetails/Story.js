@@ -4,7 +4,7 @@ import Lottie from 'lottie-react-native';
 import axios from 'axios';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { StatusBar } from 'expo-status-bar';
-import GlobalStyles from '../../src/utils/GlobalStyles'
+import GlobalStyles, { COLORS }from '../../src/utils/GlobalStyles'
 
 function Story({ route, navigation }) {
   const input = route.params.input;
@@ -161,13 +161,13 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     paddingBottom: 15,
     backgroundColor: 'white',
-    borderColor: 'black',
+    borderColor: COLORS.SECONDARY,
     borderWidth: 2,
     width: '90%',
   },
   topBarContainer: {
     flex: 0.1,
-    backgroundColor: "#2f6783",
+    backgroundColor: COLORS.SECONDARY,
     width: '100%',
     justifyContent: 'center',
   },
