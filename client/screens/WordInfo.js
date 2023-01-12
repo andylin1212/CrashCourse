@@ -20,7 +20,7 @@ function WordInfo( {route}) {
   const relatedWords = route.params.relatedWords
   const details = route.params.details
   // const [interestingFacts, setInterestingFacts] = useState('')
-  const { setOtherInfo } = useContext(LoadingContext);
+  const { setOtherInfo, setDetails } = useContext(LoadingContext);
 
 
   const additionalSearch = async (input) => {
@@ -28,13 +28,13 @@ function WordInfo( {route}) {
       const interestingResponse = await axios.post(`http://192.168.1.4:5000/interesting-facts`, {prompt: input})
       const questionResponse = await axios.post(`http://192.168.1.4:5000/questions`, {prompt: input})
       const jokeResponse = await axios.post(`http://192.168.1.4:5000/joke`, {prompt: input})
-
-      console.log('interesting', interestingResponse.data.message)
+      const detailsResponse = await axios.post(`http://192.168.1.4:5000/details`, {prompt:input})
 
       const interestingResReformatted = interestingResponse.data.message.split('\n').filter(word => word.length !== 0);
       const questionResReformatted = questionResponse.data.message.split('\n').filter(word => word.length !== 0);
       const jokeResReformatted = jokeResponse.data.message.split('\n').filter(word => word.length !== 0);
 
+      setDetails(detailsResponse.data.message);
       setOtherInfo([interestingResReformatted, questionResReformatted, jokeResReformatted]);
 
     } catch (err) {

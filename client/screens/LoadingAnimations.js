@@ -24,8 +24,7 @@ export default function LoadingAnimations({route, navigation}) {
       navigation.navigate("Info", {
         input: input,
         summary: summaryResponse.data.message,
-        relatedWords: relatedWordsResponse.data.message,
-        // details: detailsResponse.data.message
+        relatedWords: relatedWordsResponse.data.message
       })
     } catch (err) {
       Alert.alert('Error', 'There was an error making the request');

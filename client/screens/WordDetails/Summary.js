@@ -3,6 +3,7 @@ import { StyleSheet, SafeAreaView, View,  Text, TouchableOpacity, Button, Scroll
 import KeyPoint from './KeyPoint'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { StatusBar } from 'expo-status-bar';
+import GlobalStyles from '../../src/utils/GlobalStyles'
 
 
 function Summary({route, navigation}) {
@@ -28,7 +29,7 @@ function Summary({route, navigation}) {
 
       <View style={styles.container}>
         <View style={styles.summaryContainer}>
-          <Text style={styles.header}>Key Points</Text>
+          <Text style={[GlobalStyles.headerFont, styles.header]}>Key Points</Text>
           <ScrollView horizontal={false}
             style={styles.scrollViewContainer}>
           {summary.map((text)=>
@@ -47,15 +48,15 @@ function Summary({route, navigation}) {
         </View> */}
 
         <View style={styles.bottomBlockContainer}>
-          <Text style={styles.header}>Related Words</Text>
-          <Text>click on below words to search</Text>
+          <Text style={[GlobalStyles.headerFont, styles.header]}>Related Words</Text>
+          <Text style={GlobalStyles.textFont}>click on below words to search</Text>
           <View style={styles.wordsContainer}>
           {relatedWords.slice(1).map((word)=>
             <TouchableOpacity
               key={word}
               onPress={() => handleRelatedWordsSearch(word)}
               style={styles.relatedWords}>
-              <Text style={{ color: 'white', textAlign: 'center'}} key={word}>{word} </Text>
+              <Text style={[GlobalStyles.textFont, { color: 'white', textAlign: 'center'}]} key={word}>{word} </Text>
             </TouchableOpacity>
 
           )}
@@ -84,7 +85,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 35,
     top: "5%",
-    left: "44%"
+    left: "45%"
   },
   backBtn: {
     top: 35,
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   summaryContainer: {
-    flex: 2.8,
+    flex: 2.5,
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingTop: 15,

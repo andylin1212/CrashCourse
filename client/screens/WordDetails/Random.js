@@ -10,14 +10,14 @@ function Random({route, navigation}) {
 
   return (
     <View style={styles.mainContainer}>
-       <View style={styles.topBarContainer}>
-          <TouchableOpacity style={styles.backBtn}
-            onPress={() => {
-              navigation.navigate("Search")}}>
-            <Icon name='Back-to-Search' type={Icon.Ionicons} name='ios-search-sharp' size={24} color='white' />
-          </TouchableOpacity>
-          <Image style={styles.miniLogo} source={require("../../src/assets/logo1-mini.png")} />
-      </View>
+      <View style={styles.topBarContainer}>
+        <TouchableOpacity style={styles.backBtn}
+          onPress={() => {
+            navigation.navigate("Search")}}>
+          <Icon name='Back-to-Search' type={Icon.Ionicons} name='ios-search-sharp' size={24} color='white' />
+        </TouchableOpacity>
+        <Image style={styles.miniLogo} source={require("../../src/assets/logo1-mini.png")} />
+       </View>
 
       <View style={styles.container}>
         <View style={styles.interestingFactsContainer}>
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 35,
     top: "5%",
-    left: "44%"
+    left: "45%"
   },
   backBtn: {
     top: 35,

@@ -5,9 +5,6 @@ import axios from 'axios';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { StatusBar } from 'expo-status-bar';
 
-const chunkText = "You don't necessarily need the react-native-animatable library to create the animation of text being typed out in React Native. The animated library, which is built into React Native, provides a powerful set of tools for creating animations using JavaScript. However, react-native-animatable is a popular library that provides a set of pre-built animations that you can use in your React Native apps. It provides a Animatable.Text component that you can use to animate text, among other things. It also provides a simple API for creating custom animations and making it easy to apply animations to your components."
-
-
 function Story({ route, navigation }) {
   const input = route.params.input;
   const [story, setStory] = useState('');
@@ -177,7 +174,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 35,
     top: "5%",
-    left: "44%"
+    left: "45%"
   },
   backBtn: {
     top: 35,

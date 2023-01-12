@@ -70,9 +70,9 @@ app.post('/details', async (req, res) => {
     const prompt = req.body.prompt;
     const response = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: `please provide a detailed passage about ${prompt}, written in the inverted pyramid structure in less than 500 words`,
+      prompt: `please provide a detailed passage about ${prompt}, written in the inverted pyramid structure in less than 600 words. Include any major milestones, accomplishments, well-known stories if possible`,
       temperature: 0.9,
-      max_tokens: 1000,
+      max_tokens: 1200,
       top_p: 0.5,
       frequency_penalty: 0.8,
       presence_penalty: 1,

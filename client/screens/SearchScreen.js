@@ -7,6 +7,7 @@ import LoadingAnimations from './LoadingAnimations'
 import axios from 'axios';
 import { LoadingContext } from '../context/loadingContext'
 import * as Animatable from 'react-native-animatable';
+import GlobalStyles from '../src/utils/GlobalStyles'
 
 const logoAnimation = {0: {translateY: 300, scale: 1}, 0.8: {translateY: 300, scale: 1}, 1: {translateY: 200, scale: 0.8}}
 
@@ -101,8 +102,9 @@ export default function Search({navigation}) {
           ref={inputRef}
           style={styles.inputContainer}
           duration={loadDuration}>
-          <Text>What do you NEED to know about right now?</Text>
+          <Text style={GlobalStyles.textFont}>What do you NEED to know about right now?</Text>
           <TextInput
+            style={GlobalStyles.textFont}
             placeholder = "search me..."
             value = {input}
             onChangeText={text => setInput(text)}
@@ -110,6 +112,7 @@ export default function Search({navigation}) {
           />
           <Button
             title="Submit"
+            style={GlobalStyles.textFont}
             onPress={handleSubmit}
           />
           <StatusBar style="auto" />

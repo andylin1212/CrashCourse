@@ -1,29 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, SafeAreaView, View,  Text, TouchableHighlight, Button } from 'react-native';
+import React, { useState, useEffect, useContext} from 'react';
+import { StyleSheet, SafeAreaView, View,  Text, TouchableOpacity, Button, Image, ScrollView } from 'react-native';
+import { LoadingContext } from '../../context/loadingContext'
+import Icon from 'react-native-vector-icons/Ionicons';
+import { StatusBar } from 'expo-status-bar';
+import GlobalStyles from '../../src/utils/GlobalStyles'
 
-const chunkText = "You don't necessarily need the react-native-animatable library to create the animation of text being typed out in React Native. The animated library, which is built into React Native, provides a powerful set of tools for creating animations using JavaScript. However, react-native-animatable is a popular library that provides a set of pre-built animations that you can use in your React Native apps. It provides a Animatable.Text component that you can use to animate text, among other things. It also provides a simple API for creating custom animations and making it easy to apply animations to your components."
 
 
 export default function Details({ route, navigation }) {
+  const { details } = useContext(LoadingContext);
 
 
   return (
-    <SafeAreaView style={styles.mainContainer}>
-       <View style={styles.backBtn}>
-        <Button
-          title="Back"
+    <View style={styles.mainContainer}>
+      <View style={styles.topBarContainer}>
+        <TouchableOpacity style={styles.backBtn}
           onPress={() => {
-          navigation.navigate("Search", {
-            //   input: input,
-            // })
-        })}}>Back</Button>
+          navigation.navigate("Search")}}>
+          <Icon name='Back-to-Search' type={Icon.Ionicons} name='ios-search-sharp' size={24} color='white' />
+        </TouchableOpacity>
+        <Image style={styles.miniLogo} source={require("../../src/assets/logo1-mini.png")} />
       </View>
+
       <View style={styles.container}>
-        <Text style={styles.header}>Details</Text>
+        <Text style={[GlobalStyles.headerFont, styles.header]}>Details</Text>
         <View style={styles.detailsContainer}>
+          <ScrollView>
+            <Text style={GlobalStyles.textFont}>{details}</Text>
+          </ScrollView>
         </View>
       </View>
-    </SafeAreaView>
+      <StatusBar style='light'/>
+    </View>
   );
 }
 
@@ -36,18 +44,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#eefcfc',
   },
   container: {
-    flex: 0.8,
-    top: 30,
+    flex: 0.75,
+    top: 15,
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: '90%',
+    width: '100%',
     // borderColor: 'blue',
     // borderWidth: 2,
   },
   detailsContainer: {
     flex: 1,
     borderRadius: 15,
-    paddingBottom: 15,
     backgroundColor: 'white',
     borderColor: 'black',
     borderWidth: 2,
@@ -55,14 +62,28 @@ const styles = StyleSheet.create({
     shadowOffset: {width: -2, height: 4},
     shadowOpacity: 0.2,
     shadowRadius: 3,
-    width: '93%'
+    paddingHorizontal: 20,
+    paddingBottom: 30,
+    width: '93%',
+    alignItems: 'center'
+  },
+  topBarContainer: {
+    flex: 0.1,
+    backgroundColor: "#2f6783",
+    width: '100%',
+    justifyContent: 'center',
+  },
+  miniLogo: {
+    width: 40,
+    height: 35,
+    top: "5%",
+    left: "45%"
   },
   backBtn: {
-    position: 'absolute',
-    top: 55,
-    left: 20,
-    zIndex: 3,  //works for IOS
-    elevation: 3,  //works on Android
+    top: 35,
+    left: 15,
+    zIndex: 4,  //works for IOS
+    elevation: 4,  //works on Android
   },
   header: {
     // marginTop: 30,

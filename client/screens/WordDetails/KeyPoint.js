@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native'
+import GlobalStyles from '../../src/utils/GlobalStyles'
 
 const regEX = /[.):]/g;
 function KeyPoint(props) {
@@ -13,7 +14,7 @@ function KeyPoint(props) {
       <View style={[selectedStyle, {backgroundColor: props.color} ]}>
         <Text style={{ color: 'white', textAlign: 'center'}}>{num}</Text>
       </View>
-      <Text style={styles.text}>{sentence}</Text>
+      <Text style={[GlobalStyles.textFont, styles.text]}>{sentence}</Text>
    </View>
   );
 }
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
     opacity: 0.6
   },
   text: {
-    maxWidth: '83%',
+    width: "78%",
   },
   shadowProp: {
     shadowColor: '#171717',
