@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     flexWrap: 'wrap',
     marginBottom: 20,
-    width: '100%'
+    width: '95%'
   },
   square: {
     width: 30,

@@ -14,7 +14,7 @@ export default function LoadingAnimations({route, navigation}) {
   const initialSearch = async (input) => {
     try {
       const summaryResponse = await axios.post(`http://192.168.1.4:5000/summary`, {prompt: input})
-      // const relatedWordsResponse = await axios.post(`http://192.168.1.4:5000/related-words`, {prompt:input})
+      const relatedWordsResponse = await axios.post(`http://192.168.1.4:5000/related-words`, {prompt:input})
       // const detailsResponse = await axios.post(`http://192.168.1.4:5000/details`, {prompt:input})
 
       // console.log('summary', summaryResponse.data.message)
@@ -24,7 +24,7 @@ export default function LoadingAnimations({route, navigation}) {
       navigation.navigate("Info", {
         input: input,
         summary: summaryResponse.data.message,
-        relatedWords: 'relatedWordsResponse.data.message',
+        relatedWords: relatedWordsResponse.data.message,
         // details: detailsResponse.data.message
       })
     } catch (err) {
