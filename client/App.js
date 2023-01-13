@@ -20,8 +20,8 @@ export default function App() {
   console.log("app rendered");
 
   const [fontsLoaded] = useFonts({
-    'Nexa-Book' : require('./src/assets/fonts/Nexa-Book.ttf'),
-    'Nexa-Bold' : require('./src/assets/fonts/Nexa-Bold.ttf')
+    'Nunito-Bold' : require('./src/assets/fonts/Nunito-Bold.ttf'),
+    'Nunito-Regular' : require('./src/assets/fonts/Nunito-Regular.ttf')
   });
 
   useEffect(() => {

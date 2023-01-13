@@ -7,11 +7,13 @@ import { LoadingContext } from '../context/loadingContext'
 import * as Animatable from 'react-native-animatable';
 import GlobalStyles, { COLORS }from '../src/utils/GlobalStyles'
 
-const logoAnimation = {0: {translateY: 300, scale: 1.1}, 0.8: {translateY: 300, scale: 1.1}, 1: {translateY: 200, scale: 0.8}}
+const logoAnimation = {0: {translateY: 300, scale: 1.1}, 0.8: {translateY: 300, scale: 1.1}, 1: {translateY: 180, scale: 0.8}}
 
-const inputAnimation = {0: {opacity:0, translateY: 100}, 0.8: { opacity: 0, translateY: 100}, 1: {opacity: 1, translateY: -50}}
+const inputAnimation = {0: {opacity:0, translateY: 100}, 0.8: { opacity: 0, translateY: 100}, 1: {opacity: 1, translateY: -70}}
 
 const loadDuration = 4000;
+
+
 
 export default function Search({navigation}) {
   const [input, setInput] = useState('');

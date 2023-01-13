@@ -2,10 +2,10 @@ import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
   headerFont: {
-    fontFamily: "Nexa-Bold"
+    fontFamily: 'Nunito-Bold'
   },
   textFont: {
-    fontFamily: "Nexa-Book"
+    fontFamily: 'Nunito-Regular'
   }
 });
 
