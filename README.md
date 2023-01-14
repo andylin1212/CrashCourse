@@ -1,6 +1,6 @@
 # CrashCourse
 
-CrashCourse is an IOS mobile App powered by OpenAI API that summarizes Google and Wikipedia search results for your easy viewing. Type in whatever general knowledge term you want to understand, and in a matter of few seconds, you can find the most important topics/questions that’s digestible in 4 minutes or less about the topic on your app!
+CrashCourse is an IOS mobile App powered by OpenAI API that summarizes Google and Wikipedia search results for your easy viewing. Type in whatever general knowledge term you want to understand, and in a matter of few seconds, you can find the most important topics/questions that’s digestible in 4 minutes or less about the topic on your app! <br />
 First iteration of this project completed in 3 days including idea generation. Part of HackReactor Program “MVP” project.
 
 
@@ -35,7 +35,7 @@ Users can utilize the bottom navigation to checkout a detailed description, incl
 <img src="./demos/Details_RandomPage_AdobeExpress.gif" height=500 />
 
 #### Story Tab
-Story tab has an Open AI generated first person POV narrative for entertainment value. Animated a typewriter effect so the user has an experience of listening to a story. Users can navigate back to the search screen in any of the tabs for additional search.
+Story tab has an Open AI generated first person POV narrative for entertainment value. Animated a typewriter effect so the user has an experience of listening to a story. Users can stop the typing animation and view whole story anytime by clicking on "finish typing". Users can navigate back to the search screen in any of the tabs for additional search.
 
 <img src="./demos/StoryTab_NewSearch_AdobeExpress.gif" height=500 />
 
