@@ -26,7 +26,7 @@ Created animation for splash screen that renders the search bar for user input a
 #### Summary & Related Words
 Users will see 5 key points about the searched term and 9 - 12 clickable related words. When click on any of the related words, app will conduct same search via calls to API for content generation. User will be redirected to Summary screen for new search word once content is loaded.
 
-<img src=""./demos/RelatedWords-Aliens_AdobeExpress.gif" height=500 />
+<img src="./demos/RelatedWords-Aliens_AdobeExpress.gif" height=500 />
 
 #### Details & Random Tab
 Users can utilize the bottom navigation to checkout a detailed description, including major milestones and accomplishments if applicable, and other random facts about the searched term. The content generation of these tabs are done in the background when Summary page is rendered.
